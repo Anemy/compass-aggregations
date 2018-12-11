@@ -5,7 +5,7 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import Stage from 'components/stage';
 import Input from 'components/input';
-import AddStage from 'components/add-stage';
+// import AddStage from 'components/add-stage';
 
 import styles from './pipeline-workspace.less';
 
@@ -93,9 +93,9 @@ class PipelineWorkspace extends PureComponent {
           openLink={this.props.openLink}
           count={inputDocuments.count} />
         {stages}
-        <AddStage
+        {/* <AddStage
           stageAdded={this.props.stageAdded}
-          setIsModified={this.props.setIsModified} />
+          setIsModified={this.props.setIsModified} /> */}
       </div>
     );
   }

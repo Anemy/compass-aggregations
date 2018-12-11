@@ -51,6 +51,7 @@ import {
   createNew,
   confirmNew
 } from 'modules/import-pipeline';
+import { runSqlQuery } from 'modules/sqlproxy';
 import styles from './aggregations.less';
 
 /**
@@ -119,6 +120,7 @@ const MappedAggregations = connect(
     toggleSample,
     toggleAutoPreview,
     deletePipeline,
+    runSqlQuery,
     runStage,
     runOutStage,
     gotoOutResults,

@@ -82,6 +82,8 @@ export const NEW_PIPELINE = 'aggregations/NEW_PIPELINE';
  */
 export const CLONE_PIPELINE = 'aggregations/CLONE_PIPELINE';
 
+export const LOAD_PIPELINE = 'aggregations/LOAD_PIPELINE';
+
 /**
  * The main application reducer.
  *
@@ -256,6 +258,17 @@ const doConfirmNewFromText = (state) => {
   };
 };
 
+const doLoadPipeline = (state, action) => {
+  console.log('doLoadPipeline', action.pipeline);
+
+  return {
+    ...state,
+    name: '',
+    id: new ObjectId().toHexString(),
+    pipeline: action.pipeline
+  };
+};
+
 /**
  * The action to state modifier mappings.
  */
@@ -266,7 +279,8 @@ const MAPPINGS = {
   [ CLEAR_PIPELINE ]: doClearPipeline,
   [ NEW_PIPELINE ]: createNewPipeline,
   [ CLONE_PIPELINE ]: createClonedPipeline,
-  [ CONFIRM_NEW ]: doConfirmNewFromText
+  [ CONFIRM_NEW ]: doConfirmNewFromText,
+  [ LOAD_PIPELINE ]: doLoadPipeline
 };
 
 /**

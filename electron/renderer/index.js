@@ -63,20 +63,20 @@ appRegistry.emit('data-service-initialized', dataService);
 
 dataService.connect((error, ds) => {
   appRegistry.emit('data-service-connected', error, ds);
-  appRegistry.emit('collection-changed', 'citibike.trips');
+  appRegistry.emit('collection-changed', 'tableau.attendees');
   appRegistry.emit('server-version-changed', '4.0.0');
 
-  const docs = [{
-    _id: 1,
-    name: 'Aphex Twin',
-    loc: 'London',
-    members: 1,
-    newestAlbum: 'Cheetah',
-    city: {
-      home: 'London'
-    }
-  }];
-  FieldStore.processDocuments(docs);
+  // const docs = [{
+  //   _id: 1,
+  //   name: 'Aphex Twin',
+  //   loc: 'London',
+  //   members: 1,
+  //   newestAlbum: 'Cheetah',
+  //   city: {
+  //     home: 'London'
+  //   }
+  // }];
+  // FieldStore.processDocuments(docs);
 });
 
 // For automatic switching to specific namespaces, uncomment below as needed.

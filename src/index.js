@@ -7,7 +7,7 @@ import StageEditor from 'components/stage-editor';
  * A sample role for the component.
  */
 const ROLE = {
-  name: 'Aggregations',
+  name: 'Mongo-SQL-Aggregations',
   component: AggregationsPlugin,
   order: 2
 };
@@ -18,8 +18,8 @@ const ROLE = {
  * @param {Object} appRegistry - The Hadron appRegisrty to activate this plugin with.
  **/
 const activate = (appRegistry) => {
-  appRegistry.registerRole('Collection.Tab', ROLE);
-  appRegistry.registerStore('Aggregations.Store', AggregationsStore);
+  appRegistry.registerRole('Database.Tab', ROLE);
+  appRegistry.registerStore('MongoSQLAggregations.Store', AggregationsStore);
 };
 
 /**
@@ -28,8 +28,8 @@ const activate = (appRegistry) => {
  * @param {Object} appRegistry - The Hadron appRegisrty to deactivate this plugin with.
  **/
 const deactivate = (appRegistry) => {
-  appRegistry.deregisterRole('Collection.Tab', ROLE);
-  appRegistry.deregisterStore('Aggregations.Store');
+  appRegistry.deregisterRole('Database.Tab', ROLE);
+  appRegistry.deregisterStore('MongoSQLAggregations.Store');
 };
 
 export default AggregationsPlugin;

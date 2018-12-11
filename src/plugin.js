@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from 'stores';
 
 class Plugin extends Component {
-  static displayName = 'AggregationsPlugin';
+  static displayName = 'SQLAggregationsPlugin';
 
   /**
    * Connect the Plugin to the store and render.
