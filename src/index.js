@@ -8,8 +8,7 @@ import StageEditor from 'components/stage-editor';
  */
 const ROLE = {
   name: 'Mongo-SQL-Aggregations',
-  component: AggregationsPlugin,
-  order: 2
+  component: AggregationsPlugin
 };
 
 /**
@@ -17,9 +16,12 @@ const ROLE = {
 
  * @param {Object} appRegistry - The Hadron appRegisrty to activate this plugin with.
  **/
-const activate = (appRegistry) => {
-  appRegistry.registerRole('Database.Tab', ROLE);
-  appRegistry.registerStore('MongoSQLAggregations.Store', AggregationsStore);
+const activate = () => {
+  global.hadronApp.appRegistry.registerRole('Database.Tab', ROLE);
+  global.hadronApp.appRegistry.registerStore('MongoSQLAggregations.Store', AggregationsStore);
+
+  // appRegistry.registerRole('Database.Tab', ROLE);
+  // appRegistry.registerStore('MongoSQLAggregations.Store', AggregationsStore);
 };
 
 /**
@@ -27,9 +29,12 @@ const activate = (appRegistry) => {
 
  * @param {Object} appRegistry - The Hadron appRegisrty to deactivate this plugin with.
  **/
-const deactivate = (appRegistry) => {
-  appRegistry.deregisterRole('Database.Tab', ROLE);
-  appRegistry.deregisterStore('MongoSQLAggregations.Store');
+const deactivate = () => {
+  global.hadronApp.appRegistry.registerRole('Database.Tab', ROLE);
+  global.hadronApp.appRegistry.registerStore('MongoSQLAggregations.Store');
+
+  // appRegistry.deregisterRole('Database.Tab', ROLE);
+  // appRegistry.deregisterStore('MongoSQLAggregations.Store');
 };
 
 export default AggregationsPlugin;

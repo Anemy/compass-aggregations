@@ -80,6 +80,7 @@ class Stage extends Component {
     isExpanded: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
     isComplete: PropTypes.bool.isRequired,
+    isSqlError: PropTypes.string,
     fromStageOperators: PropTypes.bool.isRequired,
     previewDocuments: PropTypes.array.isRequired,
     index: PropTypes.number.isRequired,
@@ -164,6 +165,14 @@ class Stage extends Component {
    * @returns {Component} The component.
    */
   render() {
+    if (this.props.isSqlError) {
+      return (
+        <div className={styles.sqlError}>
+          {this.props.isSqlError}
+        </div>
+      );
+    }
+
     const opacity = this.props.isDragging ? 0 : (this.props.isEnabled ? 1 : 0.6);
     const errored = this.props.error ? 'stage-errored' : 'stage';
     return this.props.connectDragSource(

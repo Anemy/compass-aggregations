@@ -55,6 +55,7 @@ class PipelineWorkspace extends PureComponent {
           snippet={stage.snippet}
           error={stage.error}
           syntaxError={stage.syntaxError}
+          isSqlError={stage.isSqlError}
           isValid={stage.isValid}
           isEnabled={stage.isEnabled}
           isLoading={stage.isLoading}

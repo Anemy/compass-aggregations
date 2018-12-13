@@ -1,3 +1,4 @@
+import bson from 'bson';
 import mysql from 'mysql';
 import toNS from 'mongodb-ns';
 
@@ -19,6 +20,13 @@ export function runSqlQuery(query) {
     connection.query(explainQuery, (error, results) => {
       if (error) {
         console.log(error);
+        dispatch({
+          type: LOAD_PIPELINE,
+          pipeline: [{
+            id: new bson.ObjectId().toHexString(),
+            isSqlError: `Error running query: ${error}`
+          }]
+        });
       } else {
         console.log('Got pipeline', results[0].pipeline);
 
