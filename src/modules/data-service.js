@@ -27,6 +27,7 @@ export const INITIAL_STATE = {
 export default function reducer(state = INITIAL_STATE, action) {
   if (action.type === DATA_SERVICE_CONNECTED) {
     return {
+      ...state,
       error: action.error,
       dataService: action.dataService
     };

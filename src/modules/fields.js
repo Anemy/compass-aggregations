@@ -18,7 +18,10 @@ export const INITIAL_STATE = [];
  */
 export default function reducer(state = INITIAL_STATE, action) {
   if (action.type === FIELDS_CHANGED) {
-    return action.fields;
+    return {
+      ...state,
+      fields: action.fields
+    };
   }
   return state;
 }
