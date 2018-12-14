@@ -2,6 +2,26 @@ import parser from 'mongodb-query-parser';
 import decomment from 'decomment';
 import { parse } from 'mongodb-stage-validator';
 
+const removeSQLSyntax = s => {
+  // Only sanitize strings.
+  if (!(typeof s === 'string' || s instanceof String)) {
+    return s;
+  }
+
+  let string = s;
+
+  while (string.indexOf('NumberLong(') > -1) {
+    const index = string.indexOf('NumberLong(');
+    const prenumber = string.substring(0, index);
+    const number = string.substring(index + 11, string.indexOf(')', index));
+    const postnumber = string.substring(string.indexOf(')', index) + 1);
+
+    string = prenumber + number + postnumber;
+  }
+
+  return string;
+};
+
 /**
  * Generates an Object representing the stage to be passed to the DataService.
  *
@@ -16,8 +36,11 @@ export function generateStage(state) {
   const stage = {};
   try {
     const decommented = decomment(state.stage);
-    parse(`{${state.stageOperator}: ${decommented}}`);
-    stage[state.stageOperator] = parser(decommented);
+
+    const sqlSanitized = removeSQLSyntax(decommented);
+
+    parse(`{${state.stageOperator}: ${sqlSanitized}}`);
+    stage[state.stageOperator] = parser(sqlSanitized);
   } catch (e) {
     state.syntaxError = e.message;
     state.isValid = false;

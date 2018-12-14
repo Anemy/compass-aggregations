@@ -197,6 +197,7 @@ export const createPipeline = (text) => {
       );
     });
   } catch (e) {
+    console.log('error with creating pipeline', e);
     return [ createStage(null, '', e.message) ];
   }
 };

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import PipelineBuilderToolbar from 'components/pipeline-builder-toolbar';
+// import PipelineBuilderToolbar from 'components/pipeline-builder-toolbar';
 import PipelinePreviewToolbar from 'components/pipeline-preview-toolbar';
 
 import styles from './pipeline-toolbar.less';
@@ -46,7 +46,7 @@ class PipelineToolbar extends PureComponent {
         styles['pipeline-toolbar'],
         { [ styles['pipeline-toolbar-border'] ]: !this.props.isCollationExpanded }
       )}>
-        <PipelineBuilderToolbar
+        {/* <PipelineBuilderToolbar
           savedPipelinesListToggle={this.props.savedPipelinesListToggle}
           getSavedPipelines={this.props.getSavedPipelines}
           savedPipeline={this.props.savedPipeline}
@@ -61,7 +61,7 @@ class PipelineToolbar extends PureComponent {
           setIsModified={this.props.setIsModified}
           name={this.props.name}
           collationCollapseToggled={this.props.collationCollapseToggled}
-          isCollationExpanded={this.props.isCollationExpanded} />
+          isCollationExpanded={this.props.isCollationExpanded} /> */}
         <PipelinePreviewToolbar
           toggleComments={this.props.toggleComments}
           toggleSample={this.props.toggleSample}

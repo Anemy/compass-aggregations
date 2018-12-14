@@ -519,6 +519,7 @@ export const generatePipelineAsString = (state, index) => {
 const executeAggregation = (dataService, ns, dispatch, state, index) => {
   const stage = state.pipeline[index];
   stage.executor = generateStage(stage);
+  console.log('Try to execute stage', stage);
   if (stage.isValid && stage.isEnabled && stage.stageOperator && stage.stageOperator !== OUT) {
     executeStage(dataService, ns, dispatch, state, index);
   } else {
